@@ -2,22 +2,24 @@ public class FirstClass {
     public static void main(String[] args) {
 
         Notebook notebook = new Notebook (600, 1000,2019);
-        System.out.println(notebook.weight + " " + notebook.price + " " + notebook.year);
-        notebook.checkPrice();
-        notebook.checkWeight();
-        notebook.checkPriceAndYear();
+        printNotebook(notebook);
 
         Notebook heavyNotebook = new Notebook (2000, 1500,2005);
-        System.out.println(heavyNotebook.weight + " " + heavyNotebook.price + " " + heavyNotebook.year);
-        heavyNotebook.checkPrice();
-        heavyNotebook.checkWeight();
-        heavyNotebook.checkPriceAndYear();
+        printNotebook(heavyNotebook);
 
         Notebook oldNotebook = new Notebook (1200, 500,1999);
-        System.out.println(oldNotebook.weight + " " + oldNotebook.price + " " + oldNotebook.year);
-        oldNotebook.checkPrice();
-        oldNotebook.checkWeight();
-        oldNotebook.checkPriceAndYear();
+        printNotebook(oldNotebook);
 
+        int notebookWeight = notebook.getWeight();
+        System.out.println(notebookWeight);
     }
+
+    public static void printNotebook(Notebook ntb)
+    {
+        System.out.println(ntb.weight + " " + ntb.price + " " + ntb.year);
+        ntb.checkPrice();
+        ntb.checkWeight();
+        ntb.checkPriceAndYear();
+    }
+
 }
