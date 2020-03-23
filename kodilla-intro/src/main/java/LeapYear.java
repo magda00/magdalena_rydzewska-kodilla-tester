@@ -9,11 +9,13 @@ public class LeapYear {
         return this.value;
     }
     public void isLeapYear () {
-        if ((value%4 == 0) && (value%100 != 0) || (value%4 == 0) && (this.value%100 == 0) && (this.value%400 == 0)) {
+        if ((value%4 == 0) && (value%100 != 0)) {
             isLeap = true;
             System.out.println("True!");
-        }
-        else {
+        } else if ((value%4 == 0) && (value%100 == 0) && (value%400 == 0)) {
+            isLeap = true;
+            System.out.println("True!");
+        } else {
             isLeap = false;
             System.out.println("False.");
         }
