@@ -1,6 +1,8 @@
 public class FirstClass {
     public static void main(String[] args) {
 
+
+
         //Notebook
         Notebook notebook = new Notebook(600, 1000, 2019);
         printNotebook(notebook);
