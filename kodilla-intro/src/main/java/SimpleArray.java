@@ -9,5 +9,6 @@ public class SimpleArray {
         int numberOfElements = books.length;
 
         System.out.println("Moja tablica zawiera " + numberOfElements + " książek.");
+
     }
 }

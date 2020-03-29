@@ -18,8 +18,8 @@ public class UserLoops {
 
         User[] users = {kate, madeleine, john, michael, peter};
 
-        int sum = 0;
-        int average;
+        double sum = 0;
+        double average;
         for (int i = 0; i < users.length; i++) {
             sum = sum + users[i].age;
         }

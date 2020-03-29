@@ -2,23 +2,25 @@ public class LeapYear {
     int value;
     boolean isLeap;
 
-    public LeapYear (int value) {
+    public LeapYear(int value) {
         this.value = value;
     }
+
     public int getYear() {
         return this.value;
     }
-    public void isLeapYear () {
-        if ((value%4 == 0) && (value%100 != 0)) {
+
+    public void isLeapYear() {
+        if ((value % 4 == 0) && (value % 100 != 0)) {
             isLeap = true;
             System.out.println("True!");
-        } else if ((value%4 == 0) && (value%100 == 0) && (value%400 == 0)) {
+        } else if ((value % 4 == 0) && (value % 100 == 0) && (value % 400 == 0)) {
             isLeap = true;
             System.out.println("True!");
         } else {
             isLeap = false;
             System.out.println("False.");
         }
-     }
     }
+}
 
