@@ -15,5 +15,9 @@ public class OperatingSystem {
         System.out.println("This operating system was turned off");
     }
 
+    public void printYearOfRelease() {
+        System.out.println("This operating system was released in " + yearOfRelease);
+    }
+
 
 }
