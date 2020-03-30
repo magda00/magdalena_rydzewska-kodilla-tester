@@ -1,5 +1,11 @@
 public class Loops {
     public static void main (String[] args) {
+        int silnia = 1;
+        for (int i = 1; i <= 3; i++) {
+            silnia = silnia * i;
+        }
+        System.out.println(silnia);
+
 
         int r = 0;
         while (r <= 10) {
