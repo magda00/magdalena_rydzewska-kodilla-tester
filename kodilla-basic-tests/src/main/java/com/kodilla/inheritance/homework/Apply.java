@@ -7,11 +7,11 @@ public class Apply {
         Win8 win8 = new Win8(2012);
         Win10 win10 = new Win10(2015);
 
-        RestartAndPrintYearOfRelease(win8);
-        RestartAndPrintYearOfRelease(win10);
+        restartAndPrintYearOfRelease(win8);
+        restartAndPrintYearOfRelease(win10);
 
     }
-    public static void RestartAndPrintYearOfRelease(OperatingSystem os) {
+    public static void restartAndPrintYearOfRelease(OperatingSystem os) {
         os.turnOff();
         os.turnOn();
         os.printYearOfRelease();
