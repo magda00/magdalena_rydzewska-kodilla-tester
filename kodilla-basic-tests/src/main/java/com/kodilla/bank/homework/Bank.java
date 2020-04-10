@@ -8,23 +8,28 @@ public class Bank {
 
     public Bank(String branch) {
         this.branch = branch;
-        this.first = new CashMachine();
-        this.second = new CashMachine();
-        this.third = new CashMachine();
+        this.first = new CashMachine(1500);
+        this.second = new CashMachine(2000);
+        this.third = new CashMachine(2500);
     }
 
-    public void addTransactionToFirst(int transaction) {
-        this.first.addTransaction(transaction);
+    public void addTransactionToFirst(double transaction) {
+        if (transaction != 0) {
+            this.first.addTransaction(transaction);
+        }
     }
 
-    public void addTransactionToSecond(int transaction) {
-        this.second.addTransaction(transaction);
+    public void addTransactionToSecond(double transaction) {
+        if (transaction != 0) {
+            this.second.addTransaction(transaction);
+        }
     }
 
-    public void addTransactionToThird(int transaction) {
-        this.third.addTransaction(transaction);
+    public void addTransactionToThird(double transaction) {
+        if (transaction != 0) {
+            this.third.addTransaction(transaction);
+        }
     }
-
 
 
     public double getBalanceFirst() {
@@ -44,7 +49,6 @@ public class Bank {
     }
 
 
-
     public int getCountOfWithdrawalFirst() {
         return this.first.getCountOfWithdrawal();
     }
@@ -60,7 +64,6 @@ public class Bank {
     public int getCountOfWithdrawal() {
         return this.first.getCountOfWithdrawal() + this.second.getCountOfWithdrawal() + this.third.getCountOfWithdrawal();
     }
-
 
 
     public int getCountOfDepositFirst() {
@@ -80,7 +83,6 @@ public class Bank {
     }
 
 
-
     public double getAverageOfWithdrawalFirst() {
         return this.first.getAverageOfWithdrawal();
     }
@@ -94,11 +96,9 @@ public class Bank {
     }
 
     public double getAverageOfWithdrawal() {
-        double sum;
-        sum = this.first.getAverageOfWithdrawal() + this.second.getAverageOfWithdrawal() + this.third.getAverageOfWithdrawal();
+        double sum = this.first.getAverageOfWithdrawal() + this.second.getAverageOfWithdrawal() + this.third.getAverageOfWithdrawal();
         return sum / 3;
     }
-
 
 
     public double getAverageOfDepositFirst() {
@@ -114,8 +114,7 @@ public class Bank {
     }
 
     public double getAverageOfDeposit() {
-        double sum;
-        sum = this.first.getAverageOfDeposit() + this.second.getAverageOfDeposit() + this.third.getAverageOfDeposit();
+        double sum = this.first.getAverageOfDeposit() + this.second.getAverageOfDeposit() + this.third.getAverageOfDeposit();
         return sum / 3;
     }
 }
