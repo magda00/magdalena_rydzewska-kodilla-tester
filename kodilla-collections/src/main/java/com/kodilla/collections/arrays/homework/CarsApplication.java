@@ -8,30 +8,31 @@ import com.kodilla.collections.interfaces.homework.Volvo;
 import java.util.Random;
 
 public class CarsApplication {
+    private static Random random = new Random();
+
     public static void main(String[] args) {
-        Random random = new Random();
         Car[] cars = new Car[random.nextInt(15) + 1];
 
-        for (int i = 0; i < cars.length; i++)
+        for (int i = 0; i < cars.length; i++) {
             cars[i] = drawCar();
+            CarUtils.describeCar(cars[i]);
+        }
 
-        for (Car car : cars)
-            CarUtils.describeCar(car);
     }
 
     public static Car drawCar() {
-        Random random = new Random();
         int drawnCarBrand = random.nextInt(3);
 
         int speedSubaru = random.nextInt(101);
         int speedTesla = random.nextInt(101);
         int speedVolvo = random.nextInt(101);
 
-        if (drawnCarBrand == 0)
+        if (drawnCarBrand == 0) {
             return new Subaru(speedSubaru);
-        else if (drawnCarBrand == 1)
+        } else if (drawnCarBrand == 1) {
             return new Tesla(speedTesla);
-        else
+        } else {
             return new Volvo(speedVolvo);
+        }
     }
 }
