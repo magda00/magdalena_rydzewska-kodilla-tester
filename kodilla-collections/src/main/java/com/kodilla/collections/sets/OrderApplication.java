@@ -1,7 +1,5 @@
 package com.kodilla.collections.sets;
 
-import org.w3c.dom.ls.LSOutput;
-
 import java.util.HashSet;
 import java.util.Set;
 
@@ -19,6 +17,6 @@ public class OrderApplication {
         for (Order order : orders) {
             System.out.println(order);
         }
-    }
 
+    }
 }
