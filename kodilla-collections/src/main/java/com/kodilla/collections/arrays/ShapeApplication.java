@@ -11,7 +11,6 @@ public class ShapeApplication {
     public static void main(String[] args) {
         Random random = new Random();
         Shape[] shapes = new Shape[random.nextInt(20) + 1];
-        // Shape[] shapes = new Shape[5];  //array with 5 elements
 
         for (int i = 0; i < shapes.length; i++)
             shapes[i] = drawShape();
