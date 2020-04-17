@@ -12,8 +12,6 @@ public class Grades {
         }
     }
 
-    Grades johnGrades = new Grades(5.0, 4.0, 3.5, 5.0);
-
     public double getAverage() {
         double sum = 0.0;
 
@@ -25,9 +23,6 @@ public class Grades {
 
     @Override
     public String toString() {
-        return "Grades{" +
-                "grades=" + grades +
-                ", johnGrades=" + johnGrades +
-                '}';
+        return "Grades: " + grades;
     }
 }
