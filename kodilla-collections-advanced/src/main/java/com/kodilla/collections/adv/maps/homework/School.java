@@ -6,23 +6,20 @@ import java.util.List;
 public class School {
     private String name;
 
-    public School(String name) {
-        this.name = name;
-    }
-
     public String getName() {
         return name;
     }
 
     private List<Integer> count = new ArrayList<>();
 
-    public School(int... count) {
+    public School(String name, int... count) {
+        this.name = name;
         for (int number : count) {
             this.count.add(number);
         }
     }
 
-    public int getCount() {
+    public int getSum() {
         int sum = 0;
 
         for (int number : count) {
