@@ -9,6 +9,6 @@ public class WarehouseTestSuite {
         //given
         Warehouse warehouse = new Warehouse();
         //when
-        Order ifOrderExist = Warehouse.getOrder("000ORDER");
+        Warehouse.getOrder("000ORDER");
     }
 }
