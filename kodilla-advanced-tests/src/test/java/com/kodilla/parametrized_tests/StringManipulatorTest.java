@@ -11,7 +11,7 @@ class StringManipulatorTest {
     private StringManipulator manipulator = new StringManipulator();
 
     @ParameterizedTest
-    @CsvSource(value = {"test,tset", "OtHer,rehto", "EVent,tneve", "null,llun", "A,a"})
+    @CsvFileSource(resources = "/stringWithLowerCase.csv", numLinesToSkip = 1)
     public void shouldReverseStringWithLowerCase(String input, String expected) {
         assertEquals(expected, manipulator.reverseWithLowerCase(input));
     }
