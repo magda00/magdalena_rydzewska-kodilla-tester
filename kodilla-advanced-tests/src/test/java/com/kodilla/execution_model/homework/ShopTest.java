@@ -34,7 +34,7 @@ class ShopTest {
 
     @Test
     void shouldGetEmptySetWhenDatesIsOutOfRange() {
-        //Given @BeforeEach addOrders
+        //Given
         //When
         Set<Order> result = shop.getOrdersWithDateBetween(LocalDate.of(2019, 3, 1), LocalDate.of(2019, 3, 31));
         boolean emptySet = result.isEmpty();
@@ -44,7 +44,7 @@ class ShopTest {
 
     @Test
     void shouldGetOrdersWithDateBetween() {
-        //Given @BeforeEach addOrders
+        //Given
         //When
         Set<Order> result = shop.getOrdersWithDateBetween(LocalDate.of(2020, 3, 1), LocalDate.of(2020, 3, 31));
         //Then
@@ -53,7 +53,7 @@ class ShopTest {
 
     @Test
     void shouldGetOrdersWithValueBetween() {
-        //Given @BeforeEach addOrders
+        //Given
         //When
         Set<Order> result = shop.getOrdersWithValueBetween(10.0, 50.0);
         //Then
@@ -62,7 +62,7 @@ class ShopTest {
 
     @Test
     void shouldGetEmptySetWhenValuesIsOutOfRange() {
-        //Given @BeforeEach addOrders
+        //Given
         //When
         Set<Order> result = shop.getOrdersWithValueBetween(50.0, 150.00);
         boolean emptySet = result.isEmpty();
@@ -72,7 +72,7 @@ class ShopTest {
 
     @Test
     void shouldGetZeroWhenSetIsEmpty() {
-        //Given @BeforeEach addOrders
+        //Given
         shop.clear();
         //When
         int size = shop.getNumberOfOrders();
@@ -82,7 +82,7 @@ class ShopTest {
 
     @Test
     void shouldGetNumberOfOrders() {
-        //Given @BeforeEach addOrders
+        //Given
         //When
         int size = shop.getNumberOfOrders();
         //Then
@@ -91,7 +91,7 @@ class ShopTest {
 
     @Test
     void shouldGetSumOfValues() {
-        //Given @BeforeEach addOrders
+        //Given
         //When
         double sum = shop.getSumOfValues();
         //Then

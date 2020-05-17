@@ -5,7 +5,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class Shop {
-    Set<Order> orders = new HashSet<>();
+    private Set<Order> orders = new HashSet<>();
 
     public void addOrder(Order order) {
         orders.add(order);
