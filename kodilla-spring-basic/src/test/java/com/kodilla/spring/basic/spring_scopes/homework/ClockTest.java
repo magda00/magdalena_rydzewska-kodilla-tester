@@ -1,7 +1,6 @@
 package com.kodilla.spring.basic.spring_scopes.homework;
 
 
-import com.kodilla.spring.basic.spring_scopes.Task;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -10,7 +9,6 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 
 import java.time.LocalTime;
 
-import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 public class ClockTest {
