@@ -10,7 +10,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 public class CalculatorTest {
     ApplicationContext context = new AnnotationConfigApplicationContext("com.kodilla.spring.basic");
     Display bean = context.getBean(Display.class);
-    Calculator bean2 = context.getBean(Calculator.class);
+    Calculator calculator = context.getBean(Calculator.class);
 
     @Test
     public void shouldDisplayCorrectMessageWithValue() {
@@ -26,7 +26,7 @@ public class CalculatorTest {
     public void shouldAddValues() {
         //given
         //when
-        double output = bean2.add(2.5, 1.5);
+        double output = calculator.add(2.5, 1.5);
 
         //then
         Assertions.assertEquals(4.0, output);
@@ -36,7 +36,7 @@ public class CalculatorTest {
     public void shouldSubtractValues() {
         //given
         //when
-        double output = bean2.subtract(2.5, 1.5);
+        double output = calculator.subtract(2.5, 1.5);
 
         //then
         Assertions.assertEquals(1.0, output);
@@ -46,7 +46,7 @@ public class CalculatorTest {
     public void shouldMultiplyValues() {
         //given
         //when
-        double output = bean2.multiply(1.2, 1.2);
+        double output = calculator.multiply(1.2, 1.2);
 
         //then
         Assertions.assertEquals(1.44, output);
@@ -56,7 +56,7 @@ public class CalculatorTest {
     public void shouldDivideValues() {
         //given
         //when
-        double output = bean2.divide(4.4, 1.1);
+        double output = calculator.divide(4.4, 1.1);
 
         //then
         Assertions.assertEquals(4.0, output);
@@ -66,7 +66,7 @@ public class CalculatorTest {
     public void shouldReturnZeroWhenDivideByZero() {
         //given
         //when
-        double output = bean2.divide(4.4, 0.0);
+        double output = calculator.divide(4.4, 0.0);
 
         //then
         Assertions.assertEquals(0.0, output);
