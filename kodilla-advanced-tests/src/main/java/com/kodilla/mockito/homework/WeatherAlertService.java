@@ -20,16 +20,16 @@ public class WeatherAlertService {
     }
 
     public void sendAlertToSubscribersInSpecificLocalization(Localization localization, Alert alert) {
-        subscriptionMap.forEach((specific, subscribers) -> {
-            if (specific == localization) {
+        subscriptionMap.forEach((keyLocalization, subscribers) -> {
+            if (keyLocalization.equals(localization)) {
                 subscribers.forEach(person -> person.receive(alert));
             }
         });
     }
 
     public void removeSubscribersFromSpecificLocalization(Person person, Localization localization) {
-        if (subscriptionMap.containsKey(localization)) {
-            subscriptionMap.remove(person);
+        if (subscriptionMap.containsKey(localization)) {//this is actually redundant
+            subscriptionMap.remove(localization);//you delete from map by a key, not a value!
         }
     }
 
