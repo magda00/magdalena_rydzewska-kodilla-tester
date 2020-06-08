@@ -25,4 +25,9 @@ class BookController {
     public void addBook(@RequestBody BookDto bookDto) {
         bookService.addBook(bookDto);
     }
+
+    @DeleteMapping
+    public void removeBook(@RequestBody BookDto bookDto) {
+        bookService.removeBook(bookDto);
+    }
 }
