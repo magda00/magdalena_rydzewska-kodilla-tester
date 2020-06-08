@@ -1,0 +1,27 @@
+{
+  "name":"S80",
+  "brand":"Volvo",
+  "seats":[
+    {
+      "seatName":"firstSeat",
+      "material":"leather",
+      "color":"black"
+    },
+    {
+      "seatName":"secondSeat",
+      "material":"leather",
+      "color":"black"
+    },
+    {
+      "seatName":"thirdSeat",
+      "material":"leather",
+      "color":"black"
+    },
+    {
+      "seatName":"fourthSeat",
+      "material":"leather",
+      "color":"black"
+    }
+  ],
+  "engine size":2.0
+}
