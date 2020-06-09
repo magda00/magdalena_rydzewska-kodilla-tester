@@ -33,18 +33,16 @@ class BookControllerTest {
     }
 
     @Test
-    public void shouldAddBooks() {
+    public void shouldAddCorrectBook() {
         //given
-        Mockito.when(bookServiceMock.getBooks()).thenReturn(booksList);
+        ArgumentCaptor<BookDto> books = ArgumentCaptor.forClass(BookDto.class);
 
         //when
-        booksList.add(new BookDto("Title 1", "Author 1"));
-        booksList.add(new BookDto("Title 2", "Author 2"));
-        booksList.add(new BookDto("Title 3", "Author 3"));
-
-        List<BookDto> result = bookController.getBooks();
+        bookController.addBook(new BookDto("Title 1", "Author 1"));
 
         //then
-        assertEquals(3, result.size());
+        Mockito.verify(bookServiceMock).addBook(books.capture());
+        assertEquals("Title 1", books.getValue().getTitle());
+        assertEquals("Author 1", books.getValue().getAuthor());
     }
 }
