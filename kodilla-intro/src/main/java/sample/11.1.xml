@@ -1,0 +1,15 @@
+<vh:car xmlns:vh="http://www.kodilla.com"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.kodilla.com vehicle.xsd">
+    <vh:brand>Volvo</vh:brand>
+    <vh:name>S80</vh:name>
+    <vh:width>3.2</vh:width>
+    <vh:length>5.4</vh:length>
+    <vh:weight>2000.0</vh:weight>
+    <vh:color>green</vh:color>
+    <vh:engine>2.0</vh:engine>
+    <vh:productionYear>2020</vh:productionYear>
+    <vh:mileage>15000</vh:mileage>
+    <vh:numberOfSeats>5</vh:numberOfSeats>
+    <vh:numberOfDoors>3</vh:numberOfDoors>
+</vh:car>
