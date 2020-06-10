@@ -16,7 +16,6 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
-import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -50,16 +49,14 @@ public class BookControllerMvcTest {
 
         //given
         Gson gson = new Gson();
-//        BookDto book1 = new BookDto("Title 1", "Author 1");
-        BookDto[] books = new BookDto[]{new BookDto("title1", "author1"), new BookDto("title2", "author2")};
-        String booksInJson = gson.toJson(books);
-        System.out.println(gson.toJson(booksInJson));
-
+        BookDto book1 = new BookDto("Title 1", "Author 1");
+        String bookInJson = gson.toJson(book1);
+        System.out.println(gson.toJson(bookInJson));
 
         //when & then
         mockMvc.perform(MockMvcRequestBuilders.post("/books")
-                .contentType(MediaType.APPLICATION_JSON_VALUE))
-                .andExpect(MockMvcResultMatchers.content().contentTypeCompatibleWith(booksInJson))
+                .contentType(MediaType.APPLICATION_JSON_VALUE)
+                .content(bookInJson))
                 .andExpect(MockMvcResultMatchers.status().is(200));
     }
 }
