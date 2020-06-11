@@ -8,13 +8,14 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import java.time.LocalTime;
+import java.util.concurrent.TimeUnit;
 
 
 @SpringBootTest
 public class ClockTest {
 
     @Test
-    public void shouldCreateDifferentBeanWithTime() {
+    public void shouldCreateDifferentBeanWithTime() throws Exception {
         //given
         ApplicationContext context = new AnnotationConfigApplicationContext("com.kodilla.spring");
         Clock firstBean = context.getBean(Clock.class);
@@ -23,7 +24,9 @@ public class ClockTest {
 
         //when
         LocalTime time1 = firstBean.getTime();
+        TimeUnit.NANOSECONDS.sleep(1);
         LocalTime time2 = secondBean.getTime();
+        TimeUnit.NANOSECONDS.sleep(1);
         LocalTime time3 = thirdBean.getTime();
 
         //then

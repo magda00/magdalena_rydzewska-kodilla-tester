@@ -1,1 +1,0 @@
-curl --header "content-type: text/xml" -d D:\KodillaCourse\kodilla-soap\src\main\java\com\kodilla\soap\sample\course-request.xml -v http://localhost:8080/ws
