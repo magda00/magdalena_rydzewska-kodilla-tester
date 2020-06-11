@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://www.kodilla.com"
+           xmlns="http://www.kodilla.com"
+           elementFormDefault="qualified">
+
+    <xs:element name="car">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="brand" type="xs:string"/>
+                <xs:element name="name" type="xs:string"/>
+                <xs:element name="width" type="xs:decimal"/>
+                <xs:element name="length" type="xs:decimal"/>
+                <xs:element name="weight" type="xs:decimal"/>
+                <xs:element name="color" type="xs:string"/>
+                <xs:element name="engine" type="xs:decimal"/>
+                <xs:element name="productionYear" type="xs:integer"/>
+                <xs:element name="mileage" type="xs:integer"/>
+                <xs:element name="numberOfSeats" type="xs:integer" default="5"/>
+                <xs:element name="numberOfDoors" type="xs:integer"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>
