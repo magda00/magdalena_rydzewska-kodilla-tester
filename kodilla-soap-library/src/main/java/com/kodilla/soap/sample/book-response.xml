@@ -1,0 +1,14 @@
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/loap/envelope/">
+    <SOAP-ENV:Header/>
+    <SOAP-ENV:Body>
+        <ns2:getBookResponse xmlns:ns2="http://kodilla.com/books/soap">
+            <ns2:book>
+                <ns2:referenceNumber>TECH/959</ns2:referenceNumber>
+                <ns2:title>Clean Code</ns2:title>
+                <ns2:author>Robert C. Martin</ns2:author>
+                <ns2:publicationYear>2009</ns2:publicationYear>
+                <ns2:genre>TECH</ns2:genre>
+            </ns2:book>
+        </ns2:getBookResponse>
+    </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
