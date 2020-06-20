@@ -1,4 +1,4 @@
-package FizzBuzzGame;
+package fizzbuzz_game;
 
 public class FizzBuzz {
 

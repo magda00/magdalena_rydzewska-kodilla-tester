@@ -3,7 +3,7 @@ Feature: FizzBuzz game
    Scenario Outline: Is number divisible
       Given number <is_divisible>
       When I ask whether number is divisible
-      Then I should be told <answer>
+      Then I should be told correct <answer>
       Examples:
         | is_divisible | answer |
         | is divisible by three | "Fizz" |
