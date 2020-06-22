@@ -9,25 +9,8 @@ public class FizzBuzzGameSteps implements En {
     private String answer;
 
     public FizzBuzzGameSteps() {
-        Given("number is divisible by three", () -> {
-            this.number = 3;
-            this.number = -3;
-        });
-
-        Given("number is divisible by five", () -> {
-            this.number = 5;
-            this.number = -5;
-        });
-
-        Given("number is divisible by three and five", () -> {
-            this.number = 15;
-            this.number = -15;
-        });
-
-        Given("number isn't divisible by three or five", () -> {
-            this.number = 1;
-            this.number = 0;
-            this.number = -1;
+        Given("Next {int}", (Integer integer) -> {
+            this.number = integer;
         });
 
         When("I ask whether number is divisible", () -> {
@@ -39,5 +22,4 @@ public class FizzBuzzGameSteps implements En {
             Assert.assertEquals(string, this.answer);
         });
     }
-
 }
