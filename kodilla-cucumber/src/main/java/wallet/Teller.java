@@ -8,6 +8,12 @@ public class Teller {
     }
 
     public void withdraw(Wallet wallet, int amount) {
-        cashSlot.dispense(amount);
+        if (amount > wallet.getBalance()) {
+            cashSlot.dispense(0);
+            wallet.debit(0);
+        } else {
+            cashSlot.dispense(amount);
+            wallet.debit(amount);
+        }
     }
 }
