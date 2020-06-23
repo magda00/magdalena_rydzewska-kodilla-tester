@@ -58,4 +58,46 @@ public class DbManagerTest {
         rs.close();
         statement.close();
     }
+
+    @Test
+    public void testSelectUsersAndPosts() throws SQLException {
+        //Given
+        DbManager dbManager = DbManager.getInstance();
+        String moreThan2PostsQuery = "SELECT U.FIRSTNAME, U.LASTNAME, COUNT(*) AS POSTS_NUMBER\n" +
+                "FROM USERS U\n" +
+                "JOIN POSTS P ON U.ID = P.USER_ID\n" +
+                "GROUP BY P.USER_ID\n" +
+                "HAVING COUNT(*) > 1\n" +
+                "ORDER BY U.LASTNAME, U.FIRSTNAME";
+        Statement statement = dbManager.getConnection().createStatement();
+        ResultSet rs = statement.executeQuery(moreThan2PostsQuery);
+
+        int postsCount = 0;
+        while (rs.next()) {
+            postsCount = rs.getInt("POSTS_NUMBER");
+        }
+
+        //When
+        String sqlQuery = "SELECT U.FIRSTNAME, U.LASTNAME, COUNT(*) AS POSTS_NUMBER\n" +
+                "FROM USERS U\n" +
+                "JOIN POSTS P ON U.ID = P.USER_ID\n" +
+                "GROUP BY P.USER_ID\n" +
+                "HAVING COUNT(*) > 1\n" +
+                "ORDER BY U.LASTNAME, U.FIRSTNAME";
+
+        statement = dbManager.getConnection().createStatement();
+        rs = statement.executeQuery(sqlQuery);
+
+        //Then
+        int counter = 0;
+        while (rs.next()) {
+            System.out.println(rs.getString("FIRSTNAME") + ", " + rs.getString("LASTNAME"));
+            counter++;
+        }
+        int expected = postsCount;
+        Assert.assertEquals(expected, counter);
+
+        rs.close();
+        statement.close();
+    }
 }
