@@ -7,20 +7,24 @@ public class WalletSteps implements En {
 
     private Wallet wallet = new Wallet();
     private CashSlot cashSlot = new CashSlot();
+    private Teller teller = new Teller(cashSlot);
 
     public WalletSteps() {
-        Given("I have deposited $200 in my wallet", () -> {
-            wallet.deposit(200);
-            Assert.assertEquals("Incorrect wallet balance", 200, wallet.getBalance());
+        Given("I have deposited {int} in my wallet", (Integer deposit) -> {
+            wallet.deposit(deposit);
+            int walletBalance = wallet.getBalance();
+            int depositedMoney = deposit;
+            Assert.assertEquals("Incorrect wallet balance", depositedMoney, walletBalance);
         });
 
-        When("I request $30", () -> {
-            Teller teller = new Teller(cashSlot);
-            teller.withdraw(wallet, 30);
+        When("I request {int}", (Integer withdrawal) -> {
+            teller.withdraw(wallet, withdrawal);
         });
 
-        Then("$30 should be dispensed", () -> {
-            Assert.assertEquals(30, cashSlot.getContents());
+        Then("{int} should be dispensed", (Integer money) -> {
+            int result = cashSlot.getContents();
+            int expected = money;
+            Assert.assertEquals(expected, result);
         });
 
         Then("the balance of my wallet should be $170", () -> {
