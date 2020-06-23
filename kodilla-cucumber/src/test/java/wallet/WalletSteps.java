@@ -26,5 +26,9 @@ public class WalletSteps implements En {
             int expected = money;
             Assert.assertEquals(expected, result);
         });
+
+        Then("the balance of my wallet should be $170", () -> {
+            Assert.assertEquals("Incorrect wallet balance", 170, wallet.getBalance());
+        });
     }
 }
