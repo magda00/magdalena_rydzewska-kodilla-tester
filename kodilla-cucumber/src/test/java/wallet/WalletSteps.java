@@ -22,6 +22,7 @@ public class WalletSteps implements En {
         });
 
         Then("and {int} should be dispensed", (Integer money) -> {
+
             int result = cashSlot.getContents();
             int expected = money;
             Assert.assertEquals(expected, result);
