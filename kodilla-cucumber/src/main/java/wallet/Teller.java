@@ -16,4 +16,11 @@ public class Teller {
             wallet.debit(amount);
         }
     }
+
+    public String tellClient(Wallet wallet, int amount) {
+        if (wallet.getBalance() - amount < 0) {
+            return "You don't have sufficient funds in your account";
+        }
+        return "OK";
+    }
 }

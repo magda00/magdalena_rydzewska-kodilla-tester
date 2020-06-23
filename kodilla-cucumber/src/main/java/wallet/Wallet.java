@@ -17,4 +17,8 @@ public class Wallet {
     public void debit(int money) {
         this.balance -= money;
     }
+
+    public String displayBalance() {
+        return "Your account balance: $" + getBalance();
+    }
 }

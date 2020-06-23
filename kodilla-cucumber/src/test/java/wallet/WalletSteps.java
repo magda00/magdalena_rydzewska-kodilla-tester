@@ -21,14 +21,18 @@ public class WalletSteps implements En {
             teller.withdraw(wallet, withdrawal);
         });
 
-        Then("{int} should be dispensed", (Integer money) -> {
+        Then("and {int} should be dispensed", (Integer money) -> {
+
             int result = cashSlot.getContents();
             int expected = money;
             Assert.assertEquals(expected, result);
         });
 
-        Then("the balance of my wallet should be $170", () -> {
-            Assert.assertEquals("Incorrect wallet balance", 170, wallet.getBalance());
+        Then("the balance of my wallet should be {int}", (Integer balance) -> {
+            int expectedBalance = balance;
+            int actualBalance = wallet.getBalance();
+            Assert.assertEquals("Incorrect wallet balance", expectedBalance, actualBalance);
         });
+
     }
 }
