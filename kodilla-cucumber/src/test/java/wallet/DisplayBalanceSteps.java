@@ -8,17 +8,19 @@ public class DisplayBalanceSteps implements En {
     private Wallet wallet = new Wallet();
 
     public DisplayBalanceSteps() {
-        Given("my account has been credited with $100", () -> {
-            wallet.deposit(100);
+        Given("my account has been credited with {int}", (Integer deposit) -> {
+            wallet.deposit(deposit);
         });
 
-        When("I check my balance", () -> {
-            Assert.assertEquals("Incorrect account balance", 100, wallet.getBalance());
+        When("I check my balance, I expect {int}", (Integer balance) -> {
+            int expectedBalance = balance;
+            int actualBalance = wallet.getBalance();
+            Assert.assertEquals("Incorrect account balance", expectedBalance, actualBalance);
         });
 
-        Then("I should see that my balance is $100", () -> {
+        Then("I should see that my balance is {string}", (String answer) -> {
             String display = wallet.displayBalance();
-            Assert.assertEquals("Your account balance: $100", display);
+            Assert.assertEquals(answer, display);
         });
 
     }

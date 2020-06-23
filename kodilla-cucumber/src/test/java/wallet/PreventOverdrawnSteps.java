@@ -9,23 +9,28 @@ public class PreventOverdrawnSteps implements En {
     Teller teller = new Teller(cashSlot);
 
     public PreventOverdrawnSteps() {
-        Given("my wallet has been credited with $100", () -> {
-            wallet.deposit(100);
-            Assert.assertEquals("Incorrect wallet balance", 100, wallet.getBalance());
+        Given("my wallet has been credited with {int}", (Integer deposit) -> {
+            wallet.deposit(deposit);
+            int expectedBalance = deposit;
+            int actualBalance = wallet.getBalance();
+            Assert.assertEquals("Incorrect wallet balance", expectedBalance, actualBalance);
         });
 
-        When("I withdraw $200", () -> {
-            teller.withdraw(wallet, 200);
+        When("I withdraw {int}", (Integer withdrawal) -> {
+            teller.withdraw(wallet, withdrawal);
         });
 
-        Then("nothing should be dispensed", () -> {
-            Assert.assertEquals(0, cashSlot.getContents());
-        });
-
-        Then("I should be told that I have insufficient funds in my account", () -> {
-            String message = teller.tellClient(wallet, 200);
+        And("I should be told that I have insufficient funds in my account, when I want withdraw {int}", (Integer sum) -> {
+            String message = teller.tellClient(wallet, sum);
             Assert.assertEquals("You don't have sufficient funds in your account", message);
         });
+
+        Then("{int} should be dispensed", (Integer money) -> {
+            int expected = money;
+            int actual = cashSlot.getContents();
+            Assert.assertEquals(expected, actual);
+        });
+
 
     }
 }
