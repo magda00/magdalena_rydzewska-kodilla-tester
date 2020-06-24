@@ -32,8 +32,12 @@ public class TaskListRepositoryTest {
 
         //Then
         Assert.assertEquals(1, readTaskLists.size());
+        Assert.assertEquals("No.1", readTaskLists.get(0).getListName());
+        Assert.assertEquals("Description No.1", readTaskLists.get(0).getDescription());
 
         //CleanUp
-        taskListRepository.deleteAll();
+        int id = readTaskLists.get(0).getId();
+        taskListRepository.deleteById(id);
+        //or taskListRepository.deleteAll();
     }
 }
