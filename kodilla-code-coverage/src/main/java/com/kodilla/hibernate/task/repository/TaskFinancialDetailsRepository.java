@@ -9,6 +9,6 @@ import java.util.List;
 
 @Transactional
 @Repository
-public interface TaskFinancialDetailsRepository extends CrudRepository<TaskFinancialDetailsRepository, Integer> {
+public interface TaskFinancialDetailsRepository extends CrudRepository<TaskFinancialDetails, Integer> {
     List<TaskFinancialDetails> findByPaid(boolean paid);
 }

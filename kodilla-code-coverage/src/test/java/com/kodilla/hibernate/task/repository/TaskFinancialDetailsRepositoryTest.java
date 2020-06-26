@@ -27,7 +27,7 @@ public class TaskFinancialDetailsRepositoryTest {
     @Test
     public void testFindByPaid() {
         //Given
-        TaskFinancialDetails taskFinancialDetails = new TaskFinancialDetails(new BigDecimal(115), false;
+        TaskFinancialDetails taskFinancialDetails = new TaskFinancialDetails(new BigDecimal(115), false);
         taskFinancialDetailsRepository.save(taskFinancialDetails);
         int id = taskFinancialDetails.getId();
 
