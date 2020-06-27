@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import javax.transaction.Transactional;
 import java.math.BigDecimal;
 
 @RunWith(SpringRunner.class)
@@ -19,6 +18,12 @@ public class InvoiceRepositoryTest {
 
     @Autowired
     private InvoiceRepository invoiceRepository;
+
+    @Autowired
+    private ProductRepository productRepository;
+
+    @Autowired
+    private ItemRepository itemRepository;
 
     @Test
     public void testInvoiceRepositorySave() {
@@ -29,6 +34,11 @@ public class InvoiceRepositoryTest {
 
         Product product = new Product("Table");
         Product product2 = new Product("Radio");
+
+        productRepository.save(product);
+        int productId = product.getId();
+        productRepository.save(product2);
+        int product2Id = product2.getId();
 
         product.getItems().add(item);
         product.getItems().add(item2);
@@ -49,8 +59,14 @@ public class InvoiceRepositoryTest {
 
         //Then
         Assert.assertNotEquals(0, id);
+        Assert.assertTrue(invoice.getItems().contains(item));
+        Assert.assertTrue(invoice.getItems().contains(item2));
+        Assert.assertTrue(invoice.getItems().contains(item3));
+        Assert.assertEquals(itemRepository.count(), 3);
 
         //CleanUp
         invoiceRepository.deleteById(id);
+        productRepository.deleteById(productId);
+        productRepository.deleteById(product2Id);
     }
 }
