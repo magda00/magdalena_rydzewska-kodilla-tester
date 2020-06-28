@@ -59,10 +59,9 @@ public class InvoiceRepositoryTest {
 
         //Then
         Assert.assertNotEquals(0, id);
-        Assert.assertTrue(invoice.getItems().contains(item));
-        Assert.assertTrue(invoice.getItems().contains(item2));
-        Assert.assertTrue(invoice.getItems().contains(item3));
-        Assert.assertEquals(itemRepository.count(), 3);
+        Assert.assertNotEquals(0, invoice.getItems().get(0).getId());
+        Assert.assertNotEquals(0, invoice.getItems().get(1).getId());
+        Assert.assertNotEquals(0, invoice.getItems().get(2).getId());
 
         //CleanUp
         invoiceRepository.deleteById(id);
