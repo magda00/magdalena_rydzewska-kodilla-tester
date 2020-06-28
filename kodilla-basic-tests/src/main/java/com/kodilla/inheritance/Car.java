@@ -19,8 +19,8 @@ public class Car {
         System.out.println("Opening 4 doors");
     }
 
-    public void displayNumberOfSeats() {
-        System.out.println("Number of seats: " + seats);
+    public String displayNumberOfSeats() {
+        return "Number of seats: " + seats;
     }
 
     public int getWheels() {

@@ -21,8 +21,8 @@ public class PrimeChecker {
         return count;
     }
 
-    public void incrementCount() {
-        this.count++;
+    public int incrementCount() {
+        return this.count++;
     }
 
 }
