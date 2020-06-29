@@ -63,19 +63,36 @@ public class DbManagerTest {
     public void testSelectUsersAndPosts() throws SQLException {
         //Given
         DbManager dbManager = DbManager.getInstance();
-        String moreThan2PostsQuery = "SELECT U.FIRSTNAME, U.LASTNAME, COUNT(*) AS POSTS_NUMBER\n" +
-                "FROM USERS U\n" +
-                "JOIN POSTS P ON U.ID = P.USER_ID\n" +
-                "GROUP BY P.USER_ID\n" +
-                "HAVING COUNT(*) > 1\n" +
-                "ORDER BY U.LASTNAME, U.FIRSTNAME";
+        String dropForeignKey = "ALTER TABLE POSTS\n" +
+                "DROP FOREIGN KEY posts_ibfk_1";
+        String deletePostsQuery = "TRUNCATE TABLE POSTS";
+        String deleteUsersQuery = "TRUNCATE TABLE USERS";
+        String createForeignKeyQuery = "ALTER TABLE POSTS\n" +
+                "ADD FOREIGN KEY (USER_ID)\n" +
+                "REFERENCES USERS(ID)";
         Statement statement = dbManager.getConnection().createStatement();
-        ResultSet rs = statement.executeQuery(moreThan2PostsQuery);
-
-        int postsCount = 0;
-        while (rs.next()) {
-            postsCount = rs.getInt("POSTS_NUMBER");
-        }
+        statement.executeUpdate(dropForeignKey);
+        statement.executeUpdate(deletePostsQuery);
+        statement.executeUpdate(deleteUsersQuery);
+        statement.executeUpdate(createForeignKeyQuery);
+        String sql = "INSERT INTO USERS(FIRSTNAME, LASTNAME) VALUES ('John', 'Smith')";
+        statement.executeUpdate(sql);
+        sql = "INSERT INTO USERS(FIRSTNAME, LASTNAME) VALUES ('Stephanie', 'Kovalsky')";
+        statement.executeUpdate(sql);
+        sql = "INSERT INTO USERS(FIRSTNAME, LASTNAME) VALUES ('Thomas', 'Landgren')";
+        statement.executeUpdate(sql);
+        sql = "INSERT INTO USERS(FIRSTNAME, LASTNAME) VALUES ('John', 'Thomson')";
+        statement.executeUpdate(sql);
+        sql = "INSERT INTO POSTS(USER_ID, BODY) VALUES (1, 'This is my first post on this forum!')";
+        statement.executeUpdate(sql);
+        sql = "INSERT INTO POSTS(USER_ID, BODY) VALUES (2, 'This is my first post too!')";
+        statement.executeUpdate(sql);
+        sql = "INSERT INTO POSTS(USER_ID, BODY) VALUES (2, 'How are you?')";
+        statement.executeUpdate(sql);
+        sql = "INSERT INTO POSTS(USER_ID, BODY) VALUES (1, 'Quite good, thanks bro!')";
+        statement.executeUpdate(sql);
+        sql = "INSERT INTO POSTS(USER_ID, BODY) VALUES (4, 'Yo all! Here is Thomas!')";
+        statement.executeUpdate(sql);
 
         //When
         String sqlQuery = "SELECT U.FIRSTNAME, U.LASTNAME, COUNT(*) AS POSTS_NUMBER\n" +
@@ -84,9 +101,8 @@ public class DbManagerTest {
                 "GROUP BY P.USER_ID\n" +
                 "HAVING COUNT(*) > 1\n" +
                 "ORDER BY U.LASTNAME, U.FIRSTNAME";
-
         statement = dbManager.getConnection().createStatement();
-        rs = statement.executeQuery(sqlQuery);
+        ResultSet rs = statement.executeQuery(sqlQuery);
 
         //Then
         int counter = 0;
@@ -94,10 +110,10 @@ public class DbManagerTest {
             System.out.println(rs.getString("FIRSTNAME") + ", " + rs.getString("LASTNAME"));
             counter++;
         }
-        int expected = postsCount;
-        Assert.assertEquals(expected, counter);
 
+        Assert.assertEquals(2, counter);
         rs.close();
         statement.close();
     }
+
 }
